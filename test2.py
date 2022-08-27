@@ -3,8 +3,9 @@ import pandas as pd
 
 df = pd.read_excel('各省市经纬度.xlsx')
 df.head()
+year = "2019"
 
-geo = Geo("金融科技关键词2019",  # 设置地图标题
+geo = Geo("金融科技关键词"+year,  # 设置地图标题
           title_color="#fff",  # 设置标题颜色为白色
           title_pos="center",  # 标题位置在中间
           width=1200,  # 图片宽度
@@ -13,14 +14,14 @@ geo = Geo("金融科技关键词2019",  # 设置地图标题
           )
 
 attr = list(df['城市'])
-value = list(df['time2019'])
+value = list(df['time'+year])
 actual = dict(zip(attr,value))
 print(type(actual))
 nonvals = []
 vals = []
 for key,value in actual.items():
-    if value >= 10000000:
-        nonvals.append(key)
+    if value >= 10000000 and key!='菏泽市' and key!='新竹县':
+        nonvals.append(key.replace('澳门特别行政区' , '澳门').replace('香港特别行政区' , '香港'))
         vals.append(value)
 print(vals)
 # geo_cities_coords = {df.iloc[i]['市'] for i in range(len(df))}
@@ -50,4 +51,4 @@ geo.add("",  # 标题，构建坐标系的时候已经写好，不需要设置�
         # geo_cities_coords=geo_cities_coords#设置散点所在的经纬度
         )
 
-geo.render("geo2019-new.html")
+geo.render("geo"+year+"-new.html")
