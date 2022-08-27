@@ -50,4 +50,4 @@ geo.add("",  # 标题，构建坐标系的时候已经写好，不需要设置�
         # geo_cities_coords=geo_cities_coords#设置散点所在的经纬度
         )
 
-geo.render("geo2019-1.html")
+geo.render("geo2019-new.html")
