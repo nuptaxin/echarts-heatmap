@@ -3,7 +3,7 @@ import pandas as pd
 
 df = pd.read_excel('各省市经纬度.xlsx')
 df.head()
-year = "2019"
+year = "2010"
 
 geo = Geo("金融科技关键词"+year,  # 设置地图标题
           title_color="#fff",  # 设置标题颜色为白色
